@@ -2,6 +2,10 @@ from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import CSRFProtect
+from apps.config import config
+import os
+
+config_key = os.environ.get('FLASK_CONFIG_KEY')
 
 # SQLAlchemy 객체 생성
 db = SQLAlchemy()
@@ -11,14 +15,7 @@ csrf = CSRFProtect()
 def create_app():
   app = Flask(__name__)
 
-  # MySQL 연결
-  app.config.from_mapping(
-    SQLALCHEMY_DATABASE_URI='mysql+mysqlconnector://root:1234@localhost:3306/flaskdb',
-    SQLALCHEMY_TRACK_MODIFICATIONS=False,
-    SQLALCHEMY_EHCO=True,
-    SECRET_KEY='1234',
-    WTF_CSRF_SECRET_KEY='1234'
-  )
+  app.config.from_object(config[config_key])
 
   db.init_app(app)
   Migrate(app, db)

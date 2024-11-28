@@ -1,19 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>회원가입 페이지</title>
-</head>
-<body>
+{% extends "crud/base.html" %}
+{% block title %}회원가입{% endblock %}
+
+{% block content %}
   <h1>회원가입 페이지</h1>
   <form action="{{ url_for('crud.create_user') }}", method="post" novalidate>
     {{ form.csrf_token }}
+
     <div>
       {{ form.username.label }}
       {{ form.username(placeholder="사용자명을 입력하세요") }}
     </div>
+    {% for error in form.username.errors %}
+      <span style="color: red;">{{ error }}</span>
+    {% endfor %}
 
+    <div>
+      {{ form.email.label }}
+      {{ form.email(placeholder="메일주소를 입력하세요") }}
+    </div>
+    {% for error in form.email.errors %}
+      <span style="color: red;">{{ error }}</span>
+    {% endfor %}
+
+    <div>
+      {{ form.password.label }}
+      {{ form.password(placeholder="비밀번호를 입력하세요") }}
+    </div>
+    {% for error in form.password.errors %}
+      <span style="color: red;">{{ error }}</span>
+    {% endfor %}
+
+    <div>
+      {{ form.submit() }}
+    </div>
   </form>
-</body>
-</html>
+{% endblock %}

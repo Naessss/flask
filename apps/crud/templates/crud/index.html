@@ -1,12 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="{{ url_for('crud.static', filename='style.css') }}">
-</head>
-<body>
+{% extends "crud/base.html" %}
+{% block title %}index페이지{% endblock %}
+
+{% block content %}
   <h1>CRUD Index Page</h1>
-</body>
-</html>
+  <a href="{{ url_for('crud.create_user') }}">신규 회원 등록</a>
+
+  {% for user in users %}
+    <p>
+      id:{{ user.id }} / username : {{ user.username }} / email : {{ user.email }}
+    </p>
+  {% endfor %}
+{% endblock %}
