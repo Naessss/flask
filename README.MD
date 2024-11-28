@@ -11,6 +11,12 @@ py -3.11 -m venv venv
 ```
 pip install -r .\requirements.txt
 ```
+### .env파일 생성하고 코드 넣어주기
+```
+FLASK_APP=apps.app.py
+FLASK_DEBUG=True
+FLASK_CONFIG_KEY=local
+```
 ### DB 설정
 ```
 flask db init
