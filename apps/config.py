@@ -1,11 +1,14 @@
 import secrets
 import os
+from pathlib import Path
 
 dir = os.path.dirname(__file__)
+image_dir = Path(__file__).parent.parent
 
 class BaseConfig:
   SECRET_KEY = secrets.token_urlsafe(32)
   WTF_CSRF_SECRET_KEY = secrets.token_urlsafe(32)
+  UPLOAD_FOLDER = str(Path(image_dir, "apps", "images"))
 
 # 로컬환경 
 class LocalConfig(BaseConfig):

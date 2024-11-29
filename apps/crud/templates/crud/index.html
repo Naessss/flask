@@ -7,7 +7,10 @@
 
   {% for user in users %}
     <p>
-      id:{{ user.id }} / username : {{ user.username }} / email : {{ user.email }}
+      id:{{ user.id }} / 
+      username : <a href="{{ url_for('crud.user_edit', user_id=user.id) }}">{{ user.username }}</a>
+       / 
+      email : {{ user.email }}
     </p>
   {% endfor %}
 {% endblock %}
