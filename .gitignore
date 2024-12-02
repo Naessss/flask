@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/python,flask,visualstudiocode,windows
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,flask,visualstudiocode,windows
 
+# MODEL.PT
+model.pt
+
 ### Flask ###
 instance/*
 !instance/.gitignore

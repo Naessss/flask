@@ -5,4 +5,16 @@
   <div class="col-md-10 text-right dt-image-register-btn">
     <a href="{{ url_for('detector.upload_image') }}" class="btn btn-primary">이미지 등록</a>
   </div>
+
+  {% for img in images %}
+  <div class="card col-md-7 dt-image-content">
+    <header class="d-flex justify-content-between">
+      <div class="dt-image-username">{{ img.User.username }}</div>
+    </header>
+    <section>
+      <img src="{{ url_for('detector.image_file', filename=img.UserImage.image_path) }}" alt="">
+    </section>
+  </div>
+  {% endfor %}
+
 {% endblock %}

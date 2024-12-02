@@ -54,6 +54,7 @@ def login():
       return redirect(url_for('detector.index'))
 
     flash("아이디 또는 비밀번호가 일치하지 않습니다.")
+
   return render_template('auth/login.html', form=form)
 
 @auth.route('/logout')
